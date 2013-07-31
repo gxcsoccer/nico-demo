@@ -1,0 +1,19 @@
+{
+    "name": "nico",
+    "family": "eBase",
+    "version": "1.0.0",
+    "license": "MIT", 
+    "author": "gxcsoccer <gxcsoccer@e126.com>",
+    "homepage": "http://example.com/project/nico",
+    "description": "哈哈 哈喽娃儿得",
+    "bugs": {
+        "email": "your@email.com",
+        "url": "https://github.com/gxcsoccer/nico/issues"
+    },
+    "tests": ["ninja", "ninja-model"],
+    
+    "sources": ["http://modules.spmjs.org"],
+    "parent": "../package.json",
+    "dependencies": {
+    }
+}
