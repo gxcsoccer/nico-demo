@@ -1,18 +1,19 @@
 <!DOCTYPE HTML>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8">
-    <title>eBase/nico - Hello Nico</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="nico 0.4.3" />
-    <link type="image/x-icon" href="./static/css/favicon.ico" rel="icon">
-    <link rel="stylesheet" href="./static/css/normalize.css" />
-    <link rel="stylesheet" href="./static/css/site.css" />
-    <link rel="stylesheet" href="./static/css/solarized.css" />
+    <head>
+        <meta charset="UTF-8">
+        <title> - 哈哈 哈喽娃儿得</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="nico 0.4.3" />
+        <link type="image/x-icon" href="./static/css/favicon.ico" rel="icon">
+        <link rel="stylesheet" href="./static/css/normalize.css" />
+        <link rel="stylesheet" href="./static/css/site.css" />
+        <link rel="stylesheet" href="./static/css/solarized.css" />
+        <link rel="stylesheet" href="./static/style.css" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36247332-1']);
+  _gaq.push(['_setAccount', 'UA-39169474-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -36,13 +37,11 @@ jquery/jquery/1.7.2/jquery.js"></script>
 <script>
   (function() {
 
-  var query = location.search.substring(1).split('&');
+  var query = location.search;
   var srcdir = 'src';
-
-  if (contain(query, 'dist')) {
+  if (query.indexOf('dist') > 0) {
     srcdir = 'dist';
-    
-  } else if (contain(query, 'cov')) {
+  } else if (query.indexOf('cov') > 0) {
     srcdir = 'src-cov';
   }
 
@@ -51,13 +50,11 @@ jquery/jquery/1.7.2/jquery.js"></script>
       "$": 'jquery/jquery/1.7.2/jquery',
       "jquery": 'jquery/jquery/1.7.2/jquery',
       "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      expect: "gallery/expect/0.2.0/expect",
-      puerh: "popomore/puerh/0.1.0/puerh",
-      handlebars: "gallery/handlebars/1.0.2/handlebars",
-      sinon: "gallery/sinon/1.6.0/sinon"
+      "mocha": "gallery/mocha/1.9.0/mocha",
+      "expect": "gallery/expect/0.2.0/expect",
+      "sinon": "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
-      // resolve id
       var m = uri.match(/eBase\/nico\/1.0.0\/(.*)/);
       if (m) {
         return resolve(m[1]);
@@ -65,77 +62,89 @@ jquery/jquery/1.7.2/jquery.js"></script>
       return uri;
     }],
     comboExcludes: {test: function(uri) {
-      return uri.indexOf('http://assets.spmjs.org') === -1;
+      return !/\/\/assets\.spmjs\.org/.test(uri);
     }}
   });
 
   function resolve(file) {
-    if (contain(query, 'debug')) {
+    if (query.indexOf('debug') > 0) {
       if (file.indexOf('-debug') === -1) {
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-    return seajs.resolve("./" + srcdir + "/" + file + '#');
-  }
-
-  function contain(arr, value) {
-    for (var i in arr) {
-      if (arr[i] === value) {
-        return true;
-      }
-    }
-    return false;
+    return seajs.resolve(".//" + srcdir + "/" + file);
   }
   })();
 </script>
-    <script src="./static/js/site.js"></script>
-    <!--[if lt IE 9]>
-    <script src="./static/js/html5shiv.js"></script>
-    <![endif]-->
-    
-  </head>
-  <body>
-    <div id="body-wrapper">
-      <aside id="sidebar-wrapper">
-      <h1>
-          <a href="./">Nico</a><sup class="package-root"><a href="/">eBase</a></sup>
-      </h1>
-        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#eBase-nico" title="点击查看此组件发布情况">1.0.0</a></p>
-        <p class="description">哈哈 哈喽娃儿得</p>
-        <ul id="navigation" role="navigation">
-          <li><a href="./">文档</a></li>
-          <li><a href="examples/hello-world.html">演示</a></li>
-          <li><a class="issue-link" href="https://github.com/gxcsoccer/nico/issues" target="_blank">讨论</a></li>
-        </ul>
+        <script src="./static/js/site.js"></script>
+        <!--[if lt IE 9]>
+<script src="./static/js/html5shiv.js"></script>
+<![endif]-->
         
-<div id="output-card">
-    <h3>eBase/nico/1.0.0/<a target="_blank" id="output-file"></a></h3>
-    <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
-</div>
-
-      </aside>
-      <div id="content-wrapper">
-        <div id="content">
-<article class="hentry">
-  <h1 class="entry-title">Hello Nico</h1>
-  <div class="entry-content">
-    <p>Hello World, Hello Nico.</p>
-
-  </div>
-</article>
-</div>
-      </div>
-      
-    </div>
-    <div id="footer-wrapper">
-      <footer>
-        <p class="powered"><a href="http://aralejs.org">Arale</a> •
+        <script>
+        seajs.use(['arale/fixed/1.0.1/fixed', '/static/side'], function(Fixed, side) {
+            Fixed('.side-area', 20);
+            side.init();
+        });
+        </script>
+    </head>
+    <body>
+        <div id="body-wrapper">
+            <div class="head-area">
+                <div class="title-area">
+                    <h1>
+                        <a href="./"></a>
+                    </h1>
+                    <p class="description">哈哈 哈喽娃儿得</p>
+                    <img src="/static/alice-top.png" alt="alice" />
+                </div>
+                <iframe src="http://ghbtns.com/github-btn.html?user=aliceui&repo=aliceui.org&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
+            </div>
+            <div class="nav-area">
+                <ol class="main-nav">
+                    <li><a href="/"><i title="首页" class="iconfont"></i> 首页</a></li>
+                    <li><a href="docs/test.html">Hello Nico</a></li>
+                </ol>
+            </div>
+            <div class="main-area">
+                <div class="side-area"><ul><li><a href="#alice-是什么">Alice 是什么</a></li><li><a href="#哈哈！～">哈哈！～</a></li></ul></div>
+                
+                <script type="text/template" id="list-template">
+                    <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+                </script>
+                <div class="content-area">
+                    <h1>Hello Nico</h1>
+                    <div class="content"><p>Hello World, Hello Nico.</p>
+<h2 id="alice-是什么">Alice 是什么<a href="#alice-是什么" class="anchor">¶</a></h2><h2 id="哈哈！～">哈哈！～<a href="#哈哈！～" class="anchor">¶</a></h2></div>
+                </div>
+                <div class="comment-area">
+                    <!-- Duoshuo Comment BEGIN -->
+                    <div class="ds-thread"></div>
+                    <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"aliceui"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                        || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+                    <!-- Duoshuo Comment END -->
+                </div>
+            </div>
+        </div>
+        <div id="footer-wrapper">
+            <footer>
+            <p class="powered"><a href="http://aralejs.org">Arale</a> •
 <a href="http://aliceui.org">Alice</a> •
-<a href="http://seajs.org">Sea.js</a> •
-<a href="https://spmjs.org">spmjs.org</a> •
+<a href="http://seajs.org">SeaJS</a> •
+<a href="https://github.com/spmjs/spm2">spm</a> •
 <a href="http://lab.lepture.com/nico/">nico</a>
-        </p>
-      </footer>
-    </div>
-  </body>
+            </p>
+            </footer>
+        </div>
+    </body>
 </html>

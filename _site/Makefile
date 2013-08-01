@@ -1,4 +1,4 @@
-THEME = ./_themes/arale
+THEME = ./_themes/alice
 
 build-doc:
 	@nico build -v -C $(THEME)/nico.js
